@@ -1,0 +1,17 @@
+name: Update Nix Flake Lockfile
+description: Common Nix Flake Lockfile Updater
+
+runs:
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: Update flake.lock
+      uses: DeterminateSystems/update-flake-lock@main
+      with:
+        pr-title: "chore(flake): Update `flake.lock`" # Title of PR to be created
+        pr-labels: |                  # Labels to be set on the PR
+          dependencies
+          nix
+          automated
